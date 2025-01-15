@@ -14,7 +14,11 @@ import hello.core.member.MemberServiceImpl;
  */
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl(); //객체를 직접 생성하고 있음. = 의존성 주입을 사용하지 않은 상태 .
+
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService= appConfig.memberService();
+
+        //MemberService memberService = new MemberServiceImpl(); //객체를 직접 생성하고 있음. = 의존성 주입을 사용하지 않은 상태 .
         Member member=new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
